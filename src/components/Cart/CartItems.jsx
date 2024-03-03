@@ -8,7 +8,7 @@ const CartItems = () => {
   console.log(products);
   return (
     <Container>
-      <CartTitle>Cart Items</CartTitle>
+      <CartTitle>Cart Items:</CartTitle>
       <CartList>
         {products.map(item => (
           <CartItem item={item} />

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledHeader = styled.div`
@@ -11,4 +12,23 @@ export const StyledNavList = styled.ul`
   list-style: none;
   margin: 0;
   padding: 0;
+`;
+
+export const NavLinkStyled = styled(NavLink)`
+  text-decoration: none;
+  color: grey;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+  cursor: pointer;
+
+  &:hover {
+    color: #e37f19;
+    border-bottom-color: purple;
+  }
+
+  &.active {
+    color: purple;
+    border-bottom: 2px solid purple;
+  }
 `;
