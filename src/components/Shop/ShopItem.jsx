@@ -9,7 +9,7 @@ import { addItemToCart } from '../../store/cart-slice';
 
 const ShopItem = ({ shop, index }) => {
   const dispatch = useDispatch();
-  const cart = useSelector(state => state.cart.cartItems);
+
   //console.log(cart);
 
   return (

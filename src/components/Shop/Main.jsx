@@ -1,51 +1,55 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from 'react';
 import {
   getDrug24,
   getEDrug,
   getMedical,
   getPharmacy,
   getStayWell,
-} from "../../services/api-services";
-import ShopItems from "./ShopItems";
-import Shops from "./Shops";
-import { useDispatch, useSelector } from "react-redux";
-import { addItems } from "../../store/cart-slice";
+} from '../../services/api-services';
+import ShopItems from './ShopItems';
+import Shops from './Shops';
+import { useDispatch } from 'react-redux';
+import { addItems } from '../../store/cart-slice';
 
 const Main = () => {
   const [items, setItems] = useState(null);
   const dispatch = useDispatch();
 
+  const addItemsToStore = useCallback(() => {
+    dispatch(addItems(items));
+  }, [dispatch, items]);
+
   useEffect(() => {
-    fetchData("Medical");
+    fetchData('Medical');
   }, []);
 
   useEffect(() => {
     if (items) {
       addItemsToStore();
     }
-  }, [items]);
+  }, [items, addItemsToStore]);
 
-  const fetchData = async (shopName) => {
+  const fetchData = async shopName => {
     let data;
 
     switch (shopName) {
-      case "Medical":
+      case 'Medical':
         data = await getMedical();
 
         break;
-      case "Pharmacy":
+      case 'Pharmacy':
         data = await getPharmacy();
 
         break;
-      case "Drug24":
+      case 'Drug24':
         data = await getDrug24();
 
         break;
-      case "EDrug":
+      case 'EDrug':
         data = await getEDrug();
 
         break;
-      case "StayWell":
+      case 'StayWell':
         data = await getStayWell();
 
         break;
@@ -56,16 +60,13 @@ const Main = () => {
     setItems(data);
   };
 
-  const addItemsToStore = () => {
-    dispatch(addItems(items));
-  };
   return (
     <div
       style={{
-        display: "flex",
-        flexDirection: "row",
-        gap: "20px",
-        padding: "20px 30px",
+        display: 'flex',
+        flexDirection: 'row',
+        gap: '20px',
+        padding: '20px 30px',
       }}
     >
       <Shops
