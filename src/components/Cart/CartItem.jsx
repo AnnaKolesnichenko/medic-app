@@ -1,4 +1,14 @@
-import { AboutItemDiv, CartImage, CartLi, CartTitle } from './CartItem.styled';
+import {
+  AboutItemDiv,
+  CartImage,
+  CartItemQuantity,
+  CartLi,
+  CartPrice,
+  CartTitle,
+  IconStyled,
+  IconStyledTwo,
+  QuantitySpan,
+} from './CartItem.styled';
 import { TbTriangleFilled, TbTriangleInvertedFilled } from 'react-icons/tb';
 
 const CartItem = ({ item, id }) => {
@@ -9,14 +19,14 @@ const CartItem = ({ item, id }) => {
       </div>
       <AboutItemDiv>
         <CartTitle>{item.title}</CartTitle>
-        <span>{item.price}</span>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
-          <span>{item.quantity}</span>
+        <CartPrice>${item.price}</CartPrice>
+        <CartItemQuantity>
+          <QuantitySpan>{item.quantity}</QuantitySpan>
           <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <TbTriangleFilled />
-            <TbTriangleInvertedFilled />
+            <IconStyled />
+            <IconStyledTwo />
           </div>
-        </div>
+        </CartItemQuantity>
       </AboutItemDiv>
     </CartLi>
   );

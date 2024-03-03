@@ -3,9 +3,10 @@ import { Container } from './UserForm.styled';
 import CartItem from './CartItem';
 import { CartList, CartTitle } from './CartItems.styled';
 
-const CartItems = () => {
+const CartItems = ({ getProductsPicked }) => {
   const products = useSelector(state => state.cart.cartItems);
-  console.log(products);
+
+  getProductsPicked(products);
   return (
     <Container>
       <CartTitle>Cart Items:</CartTitle>

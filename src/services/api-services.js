@@ -1,8 +1,11 @@
+import axios from 'axios';
+
+const API_URL =
+  'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app';
+
 export const getDrug24 = async () => {
   try {
-    const response = await fetch(
-      'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app/drug24.json'
-    );
+    const response = await fetch(`${API_URL}/drug24.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -16,9 +19,7 @@ export const getDrug24 = async () => {
 
 export const getEDrug = async () => {
   try {
-    const response = await fetch(
-      'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app/e-drug.json'
-    );
+    const response = await fetch(`${API_URL}/e-drug.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -32,9 +33,7 @@ export const getEDrug = async () => {
 
 export const getMedical = async () => {
   try {
-    const response = await fetch(
-      'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app/medical.json'
-    );
+    const response = await fetch(`${API_URL}/medical.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -48,9 +47,7 @@ export const getMedical = async () => {
 
 export const getPharmacy = async () => {
   try {
-    const response = await fetch(
-      'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app/pharmacy.json'
-    );
+    const response = await fetch(`${API_URL}/pharmacy.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -64,9 +61,7 @@ export const getPharmacy = async () => {
 
 export const getStayWell = async () => {
   try {
-    const response = await fetch(
-      'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app/staywell.json'
-    );
+    const response = await fetch(`${API_URL}/staywell.json`);
     if (!response.ok) {
       throw new Error('Failed to fetch data');
     }
@@ -76,4 +71,8 @@ export const getStayWell = async () => {
     console.error('Error fetching data:', error);
     return null;
   }
+};
+
+export const addItemsToDB = data => {
+  axios.post(`${API_URL}/order.json`, data);
 };
