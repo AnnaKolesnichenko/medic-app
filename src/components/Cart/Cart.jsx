@@ -59,6 +59,11 @@ const Cart = () => {
     }
     console.log('SUCCESS');
     addItemsToDB({ userData, cartData });
+    const orderData = {
+      userData,
+      cartData,
+    };
+    localStorage.setItem('cart', JSON.stringify(orderData));
   };
 
   return (

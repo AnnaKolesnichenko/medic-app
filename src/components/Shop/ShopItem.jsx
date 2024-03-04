@@ -1,20 +1,33 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   AboutStyled,
   ButtonStyled,
   ImageStyled,
   ItemStyled,
+  MedicineLikedStyled,
   PriceStyled,
   TitleStyled,
 } from './ShopItem.styled';
-import { addItemToCart } from '../../store/cart-slice';
+import { addItemToCart, handleLiked } from '../../store/cart-slice';
 import { motion } from 'framer-motion';
 
 const ShopItem = ({ shop, index }) => {
   const dispatch = useDispatch();
+  const favoured = useSelector(state => state.cart.itemsLiked);
+
+  const handleToggleLiked = () => {
+    dispatch(handleLiked(shop.id));
+    console.log(shop.id);
+  };
+
+  const included = favoured.map(item => item.id).includes(shop.id);
 
   return (
     <ItemStyled key={index}>
+      <MedicineLikedStyled
+        onClick={handleToggleLiked}
+        color={included ? 'pink' : '#b4c0c4'}
+      />
       <ImageStyled src={shop.image} alt={shop.title} />
       <AboutStyled>
         <div style={{ display: 'flex', flexDirection: 'column' }}>

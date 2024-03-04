@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   cartItems: [],
   allItems: [],
+  itemsLiked: [],
 };
 
 const CartSlice = createSlice({
@@ -70,6 +71,19 @@ const CartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
     },
+    handleLiked(state, action) {
+      const id = action.payload;
+      const product = state.allItems.find(item => item.id === id);
+
+      if (product) {
+        const existingItem = state.itemsLiked.findIndex(item => item.id === id);
+        if (existingItem !== -1) {
+          state.itemsLiked.splice(existingItem, 1);
+        } else {
+          state.itemsLiked.push(product);
+        }
+      }
+    },
   },
 });
 
@@ -79,5 +93,6 @@ export const {
   handleIncreaseItem,
   clearCart,
   addItems,
+  handleLiked,
 } = CartSlice.actions;
 export const cartSlice = CartSlice.reducer;
