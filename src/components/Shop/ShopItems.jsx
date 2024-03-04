@@ -1,19 +1,46 @@
+import { useEffect, useState } from 'react';
 import ShopItem from './ShopItem';
-import { ItemsStyled } from './ShopItem.styled';
+import {
+  IconStyled,
+  IconStyledTwo,
+  ItemsStyled,
+  SortBtnsStyled,
+} from './ShopItem.styled';
+import { Button } from './Shops.styled';
 
 const ShopItems = ({ items }) => {
-  let shopItems = [];
+  const [itemsShown, setItemsShown] = useState(items);
 
-  for (const value in items) {
-    const shop = items[value];
+  useEffect(() => {
+    setItemsShown(items);
+  }, [items]);
 
-    shopItems.push(shop);
-  }
+  const upItems = () => {
+    const descending = [...items].sort(
+      (a, b) => parseFloat(a.price) - parseFloat(b.price)
+    );
+    setItemsShown(descending);
+  };
+
+  const downItems = () => {
+    const ascending = [...items].sort(
+      (a, b) => parseFloat(b.price) - parseFloat(a.price)
+    );
+    setItemsShown(ascending);
+  };
 
   return (
     <div>
+      <SortBtnsStyled>
+        <Button onClick={downItems}>
+          Price <IconStyled />
+        </Button>
+        <Button onClick={upItems}>
+          Price <IconStyledTwo />
+        </Button>
+      </SortBtnsStyled>
       <ItemsStyled>
-        {shopItems.map(shop => (
+        {itemsShown.map(shop => (
           <ShopItem shop={shop} key={shop.id} />
         ))}
       </ItemsStyled>

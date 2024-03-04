@@ -13,8 +13,6 @@ import { motion } from 'framer-motion';
 const ShopItem = ({ shop, index }) => {
   const dispatch = useDispatch();
 
-  //console.log(cart);
-
   return (
     <ItemStyled key={index}>
       <ImageStyled src={shop.image} alt={shop.title} />

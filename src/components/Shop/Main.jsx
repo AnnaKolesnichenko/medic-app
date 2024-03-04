@@ -60,6 +60,13 @@ const Main = () => {
     setItems(data);
   };
 
+  let shopItems = [];
+  for (const value in items) {
+    const shop = items[value];
+
+    shopItems.push(shop);
+  }
+
   return (
     <div
       style={{
@@ -74,7 +81,7 @@ const Main = () => {
         onButtonClick={fetchData}
         addItemsToStore={addItemsToStore}
       />
-      <ShopItems items={items} />
+      <ShopItems items={shopItems} />
     </div>
   );
 };

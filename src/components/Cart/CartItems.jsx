@@ -1,21 +1,20 @@
 import { useSelector } from 'react-redux';
-import { Container } from './UserForm.styled';
+import { ContainerStyled } from './CartItems.styled';
 import CartItem from './CartItem';
 import { CartList, CartTitle } from './CartItems.styled';
 
-const CartItems = ({ getProductsPicked }) => {
+const CartItems = () => {
   const products = useSelector(state => state.cart.cartItems);
 
-  getProductsPicked(products);
   return (
-    <Container>
+    <ContainerStyled>
       <CartTitle>Cart Items:</CartTitle>
       <CartList>
         {products.map(item => (
           <CartItem item={item} />
         ))}
       </CartList>
-    </Container>
+    </ContainerStyled>
   );
 };
 

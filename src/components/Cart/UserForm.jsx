@@ -1,6 +1,7 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import {
   Container,
+  ContainerUserForm,
   FormStyled,
   InputContainer,
   InputStyled,
@@ -9,6 +10,7 @@ import {
 import { stagger, useAnimate } from 'framer-motion';
 
 const UserForm = ({ getUserData }) => {
+  const [user, setUser] = useState(null);
   const [scope, animate] = useAnimate();
   const nameRef = useRef();
   const emailRef = useRef();
@@ -38,15 +40,16 @@ const UserForm = ({ getUserData }) => {
         { type: 'spring', duration: 0.1, delay: stagger(0.01) }
       );
       return;
+    } else {
+      console.log('SUCCESS');
+
+      getUserData(user);
     }
-    console.log('SUCCESS');
     console.log(userData);
-    console.log('Done');
-    getUserData(userData);
   };
 
   return (
-    <Container>
+    <ContainerUserForm>
       <FormStyled onSubmit={handleSubmit} ref={scope}>
         <InputContainer>
           <LabelStyled htmlFor="name">Name</LabelStyled>
@@ -65,19 +68,7 @@ const UserForm = ({ getUserData }) => {
           <InputStyled type="text" id="address" ref={addressRef} />
         </InputContainer>
       </FormStyled>
-      {/* <SubmitContainer>
-        <TotalStyled>Total price:</TotalStyled>
-        <span></span>
-        <SubmitButton
-          type="button"
-          as={motion.button}
-          whileHover={{ scale: 1.1 }}
-          transition={{ type: 'spring', duration: 0.3, stiffness: 400 }}
-        >
-          Submit
-        </SubmitButton>
-      </SubmitContainer> */}
-    </Container>
+    </ContainerUserForm>
   );
 };
 

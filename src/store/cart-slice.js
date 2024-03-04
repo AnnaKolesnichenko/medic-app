@@ -48,28 +48,28 @@ const CartSlice = createSlice({
         alert('There is no such product');
       }
     },
-    //     handleIncreaseItem(state, action) {
-    //       const id = action.payload;
-    //       const item = state.items.find((item) => item.id === id);
-    //       if (item) {
-    //         item.quantity++;
-    //       }
-    //     },
-    //     handleDecreaseItem(state, action) {
-    //       const id = action.payload;
-    //       const itemIndex = state.items.findIndex((item) => item.id === id);
-    //       if (itemIndex !== -1) {
-    //         const item = state.items[itemIndex];
-    //         if (item.quantity === 1) {
-    //           state.items.splice(itemIndex, 1);
-    //         } else {
-    //           item.quantity--;
-    //         }
-    //       }
-    //     },
-    //     clearCart(state, action) {
-    //       state.items = [];
-    //     },
+    handleIncreaseItem(state, action) {
+      const id = action.payload;
+      const item = state.cartItems.find(item => item.id === id);
+      if (item) {
+        item.quantity++;
+      }
+    },
+    handleDecreaseItem(state, action) {
+      const id = action.payload;
+      const itemIndex = state.cartItems.findIndex(item => item.id === id);
+      if (itemIndex !== -1) {
+        const item = state.cartItems[itemIndex];
+        if (item.quantity === 1) {
+          state.cartItems.splice(itemIndex, 1);
+        } else {
+          item.quantity--;
+        }
+      }
+    },
+    clearCart(state, action) {
+      state.cartItems = [];
+    },
   },
 });
 

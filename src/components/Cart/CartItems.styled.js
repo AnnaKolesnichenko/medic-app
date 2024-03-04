@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const ContainerStyled = styled.div`
+  padding: 30px 30px;
+  margin-left: 10px;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: 40%;
+`;
+
 export const CartList = styled.ul`
   display: flex;
   flex-direction: column;
@@ -12,4 +20,6 @@ export const CartList = styled.ul`
 export const CartTitle = styled.span`
   font-size: 14px;
   font-family: 'Raleway', sans-serif;
+  color: #35484f;
+  font-weight: 600;
 `;

@@ -14,6 +14,8 @@ export const TitleStyled = styled.h2`
   text-align: center;
   font-size: 14px;
   font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+  color: #35484f;
 `;
 
 export const ListStyled = styled.ul`
@@ -45,8 +47,13 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   width: 100px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid grey;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #b4c0c4;
+  color: #35484f;
+  background-color: #b4c0c4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
   cursor: pointer;
 `;

@@ -28,7 +28,7 @@ export const NavLinkStyled = styled(NavLink)`
   }
 
   &.active {
-    color: purple;
-    border-bottom: 2px solid purple;
+    color: #35484f;
+    border-bottom: 2px solid #35484f;
   }
 `;

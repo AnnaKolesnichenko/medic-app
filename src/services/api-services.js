@@ -74,5 +74,5 @@ export const getStayWell = async () => {
 };
 
 export const addItemsToDB = data => {
-  axios.post(`${API_URL}/order.json`, data);
+  axios.post(`${API_URL}/userData.json`, data);
 };
