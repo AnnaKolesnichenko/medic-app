@@ -5,7 +5,7 @@ export const ContainerUserForm = styled.div`
   margin-left: 10px;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  width: 40%;
+  width: 50%;
 `;
 
 export const FormStyled = styled.form`

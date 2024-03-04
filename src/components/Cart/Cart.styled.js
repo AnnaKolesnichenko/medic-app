@@ -11,7 +11,7 @@ export const SubmitContainer = styled.div`
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  padding: 15px 30px;
+  padding: 15px 0;
 `;
 
 export const TotalStyled = styled.h2`
@@ -32,7 +32,6 @@ export const TotalAmoutStyled = styled.span`
 
 export const SubmitButton = styled.button`
   padding: 12px 18px;
-  //box-sizing: border-box;
   width: 100px;
   background-color: #b4c0c4;
   border: none;

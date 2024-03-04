@@ -6,7 +6,7 @@ import Cart from '../src/components/Cart/Cart';
 
 function App() {
   return (
-    <div>
+    <div style={{ padding: '15px 30px' }}>
       <Header />
       <Routes>
         <Route path="/" element={<Main />}></Route>
