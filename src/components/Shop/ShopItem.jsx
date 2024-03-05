@@ -10,6 +10,7 @@ import {
 } from './ShopItem.styled';
 import { addItemToCart, handleLiked } from '../../store/cart-slice';
 import { motion } from 'framer-motion';
+import Notiflix from 'notiflix';
 
 const ShopItem = ({ shop, index }) => {
   const dispatch = useDispatch();
@@ -17,10 +18,13 @@ const ShopItem = ({ shop, index }) => {
 
   const handleToggleLiked = () => {
     dispatch(handleLiked(shop.id));
-    console.log(shop.id);
   };
 
   const included = favoured.map(item => item.id).includes(shop.id);
+
+  const checkAddedToCart = () => {
+    Notiflix.Notify.success('Congrats! Your product was added to the cart!');
+  };
 
   return (
     <ItemStyled key={index}>
@@ -40,6 +44,7 @@ const ShopItem = ({ shop, index }) => {
           transition={{ type: 'spring', duration: 0.3, stiffness: 400 }}
           onClick={() => {
             dispatch(addItemToCart(shop.id));
+            checkAddedToCart();
           }}
         >
           add to Cart

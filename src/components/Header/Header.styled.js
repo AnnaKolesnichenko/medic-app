@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -14,7 +15,7 @@ export const StyledNavList = styled.ul`
   padding: 0;
 `;
 
-export const NavLinkStyled = styled(NavLink)`
+export const NavLinkStyled = styled(motion(NavLink))`
   text-decoration: none;
   color: grey;
   font-size: 16px;
@@ -22,10 +23,10 @@ export const NavLinkStyled = styled(NavLink)`
   font-family: 'Raleway', sans-serif;
   cursor: pointer;
 
-  &:hover {
+  /* &:hover {
     color: #e37f19;
     border-bottom-color: purple;
-  }
+  } */
 
   &.active {
     color: #35484f;

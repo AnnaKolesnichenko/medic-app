@@ -6,6 +6,15 @@ import {
   TitleStyled,
 } from './Shops.styled';
 
+const initial = { color: '#35484f', backgroundColor: '#b4c0c4' };
+const hover = {
+  scale: 1.1,
+  color: 'pink',
+  backgroundColor: 'purple',
+};
+
+const transition = { type: 'spring', stiffness: 500 };
+
 const Shops = ({ onButtonClick }) => {
   return (
     <ContainerStyled>
@@ -17,13 +26,9 @@ const Shops = ({ onButtonClick }) => {
             <Button
               type="button"
               as={motion.button}
-              initial={{ color: 'grey', backgroundColor: 'lightgray' }}
-              whileHover={{
-                scale: 1.1,
-                color: 'pink',
-                backgroundColor: 'purple',
-              }}
-              transition={{ type: 'spring', stiffness: 500 }}
+              initial={initial}
+              whileHover={hover}
+              transition={transition}
               onClick={() => onButtonClick('Drug24')}
             >
               Drug 24
@@ -32,13 +37,9 @@ const Shops = ({ onButtonClick }) => {
           <li>
             <Button
               as={motion.button}
-              initial={{ color: 'grey', backgroundColor: 'lightgray' }}
-              whileHover={{
-                scale: 1.1,
-                color: 'pink',
-                backgroundColor: 'purple',
-              }}
-              transition={{ type: 'spring', stiffness: 500 }}
+              initial={initial}
+              whileHover={hover}
+              transition={transition}
               type="button"
               onClick={() => onButtonClick('Pharmacy')}
             >
@@ -49,13 +50,9 @@ const Shops = ({ onButtonClick }) => {
             <Button
               type="button"
               as={motion.button}
-              initial={{ color: 'grey', backgroundColor: 'lightgray' }}
-              whileHover={{
-                scale: 1.1,
-                color: 'pink',
-                backgroundColor: 'purple',
-              }}
-              transition={{ type: 'spring', stiffness: 500 }}
+              initial={initial}
+              whileHover={hover}
+              transition={transition}
               onClick={() => onButtonClick('EDrug')}
             >
               E-drug
@@ -65,13 +62,9 @@ const Shops = ({ onButtonClick }) => {
             <Button
               type="button"
               as={motion.button}
-              initial={{ color: 'grey', backgroundColor: 'lightgray' }}
-              whileHover={{
-                scale: 1.1,
-                color: 'pink',
-                backgroundColor: 'purple',
-              }}
-              transition={{ type: 'spring', stiffness: 500 }}
+              initial={initial}
+              whileHover={hover}
+              transition={transition}
               onClick={() => onButtonClick('StayWell')}
             >
               StayWell
@@ -81,13 +74,9 @@ const Shops = ({ onButtonClick }) => {
             <Button
               type="button"
               as={motion.button}
-              initial={{ color: 'grey', backgroundColor: 'lightgray' }}
-              whileHover={{
-                scale: 1.1,
-                color: 'pink',
-                backgroundColor: 'purple',
-              }}
-              transition={{ type: 'spring', stiffness: 500 }}
+              initial={initial}
+              whileHover={hover}
+              transition={transition}
               onClick={() => onButtonClick('Medical')}
             >
               24/7

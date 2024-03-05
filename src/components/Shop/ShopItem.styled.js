@@ -67,7 +67,7 @@ export const ButtonStyled = styled.button`
 export const SortBtnsStyled = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
@@ -80,6 +80,9 @@ export const IconStyled = styled(TbTriangleFilled)`
   height: 15px;
   color: #35484f;
   margin-left: 5px;
+  &:hover {
+    color: pink;
+  }
 `;
 
 export const IconStyledTwo = styled(TbTriangleInvertedFilled)`
@@ -87,6 +90,10 @@ export const IconStyledTwo = styled(TbTriangleInvertedFilled)`
   height: 15px;
   color: #35484f;
   margin-left: 5px;
+
+  &:hover {
+    color: pink;
+  }
 `;
 
 export const MedicineLikedStyled = styled(MdOutlineMedication)`

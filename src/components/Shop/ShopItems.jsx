@@ -7,6 +7,16 @@ import {
   SortBtnsStyled,
 } from './ShopItem.styled';
 import { Button } from './Shops.styled';
+import { motion } from 'framer-motion';
+
+const initial = { color: '#35484f', backgroundColor: '#b4c0c4' };
+const hover = {
+  scale: 1.1,
+  color: 'pink',
+  backgroundColor: 'purple',
+};
+
+const transition = { type: 'spring', stiffness: 500 };
 
 const ShopItems = ({ items }) => {
   const [itemsShown, setItemsShown] = useState(items);
@@ -32,10 +42,22 @@ const ShopItems = ({ items }) => {
   return (
     <div>
       <SortBtnsStyled>
-        <Button onClick={downItems}>
+        <Button
+          onClick={downItems}
+          as={motion.button}
+          initial={initial}
+          whileHover={hover}
+          transition={transition}
+        >
           Price <IconStyled />
         </Button>
-        <Button onClick={upItems}>
+        <Button
+          onClick={upItems}
+          as={motion.button}
+          initial={initial}
+          whileHover={hover}
+          transition={transition}
+        >
           Price <IconStyledTwo />
         </Button>
       </SortBtnsStyled>
