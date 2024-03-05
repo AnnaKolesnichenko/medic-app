@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/medic-app/static/css/main.505cdb6b.css",
-    "main.js": "/medic-app/static/js/main.b63dd7db.js",
+    "main.js": "/medic-app/static/js/main.4552832e.js",
     "index.html": "/medic-app/index.html",
     "main.505cdb6b.css.map": "/medic-app/static/css/main.505cdb6b.css.map",
-    "main.b63dd7db.js.map": "/medic-app/static/js/main.b63dd7db.js.map"
+    "main.4552832e.js.map": "/medic-app/static/js/main.4552832e.js.map"
   },
   "entrypoints": [
     "static/css/main.505cdb6b.css",
-    "static/js/main.b63dd7db.js"
+    "static/js/main.4552832e.js"
   ]
 }
