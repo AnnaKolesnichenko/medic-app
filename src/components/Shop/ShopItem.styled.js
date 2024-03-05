@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { TbTriangleInvertedFilled } from 'react-icons/tb';
 import { TbTriangleFilled } from 'react-icons/tb';
 import { MdOutlineMedication } from 'react-icons/md';
-import { AiOutlineLike } from 'react-icons/ai';
+import { FcLike } from 'react-icons/fc';
 
 export const ItemsStyled = styled.ul`
   display: flex;
@@ -104,9 +104,9 @@ export const MedicineLikedStyled = styled(MdOutlineMedication)`
   cursor: pointer;
 `;
 
-export const ProductSortFavourite = styled(AiOutlineLike)`
-  width: 25px;
-  height: 25px;
+export const ProductSortFavourite = styled(FcLike)`
+  width: 20px;
+  height: 20px;
   color: #35484f;
   margin-left: 5px;
 

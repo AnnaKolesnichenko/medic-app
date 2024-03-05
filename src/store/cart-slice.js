@@ -76,17 +76,22 @@ const CartSlice = createSlice({
     handleLiked(state, action) {
       const id = action.payload;
       const product = state.allItems.find(item => item.id === id);
+      const existingLiked = state.itemsLiked.find(item => item.id === id);
+
+      if (existingLiked) {
+        state.itemsLiked.splice(existingLiked, 1);
+      }
 
       if (product) {
         const existingItem = state.itemsLiked.findIndex(item => item.id === id);
         if (existingItem !== -1) {
           state.itemsLiked.splice(existingItem, 1);
-          product.isLiked = false;
+          //product.isLiked = false;
         } else {
           const product = state.allItems.find(item => item.id === id);
           if (product) {
             state.itemsLiked.push({ ...product, isLiked: true });
-            product.isLiked = true;
+            //product.isLiked = true;
           }
         }
       }

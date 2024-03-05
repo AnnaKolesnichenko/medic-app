@@ -18,6 +18,7 @@ const ShopItem = ({ shop, index }) => {
 
   const handleToggleLiked = () => {
     dispatch(handleLiked(shop.id));
+    console.log(shop.id);
   };
 
   const included = favoured.map(item => item.id).includes(shop.id);

@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
@@ -32,14 +33,19 @@ export const ListStyled = styled.ul`
   list-style: none;
 `;
 
-export const ListItemStyled = styled.li`
-  display: flex;
+export const ListItemStyled = styled(NavLink)`
+  /* display: flex;
   justify-content: center;
   align-items: center;
   width: 100px;
   padding: 5px 10px;
   border-radius: 5px;
-  border: 1px solid grey;
+  border: 1px solid grey; */
+
+  /* &.active {
+    color: #35484f;
+    border-bottom: 2px solid #35484f;
+  } */
 `;
 
 export const Button = styled.button`

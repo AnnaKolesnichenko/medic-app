@@ -29,7 +29,7 @@ const ShopItems = ({ items }) => {
     setItemsShown(items);
   }, [items]);
 
-  const handleReremnder = () => {
+  const handleRerender = () => {
     const combinedArrays = [
       ...liked,
       ...all.filter(item => !liked.includes(item)),
@@ -39,6 +39,7 @@ const ShopItems = ({ items }) => {
       (item, index, self) => index === self.findIndex(t => t.id === item.id)
     );
     setItemsShown(uniqueItems);
+    console.log(liked);
   };
 
   const upItems = () => {
@@ -77,13 +78,13 @@ const ShopItems = ({ items }) => {
           Price <IconStyledTwo />
         </Button>
         <Button
-          onClick={handleReremnder}
+          onClick={handleRerender}
           as={motion.button}
           initial={initial}
           whileHover={hover}
           transition={transition}
         >
-          Favourite <ProductSortFavourite />
+          Fav <ProductSortFavourite />
         </Button>
       </SortBtnsStyled>
       <ItemsStyled>
