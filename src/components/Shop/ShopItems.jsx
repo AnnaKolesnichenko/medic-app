@@ -4,10 +4,12 @@ import {
   IconStyled,
   IconStyledTwo,
   ItemsStyled,
+  ProductSortFavourite,
   SortBtnsStyled,
 } from './ShopItem.styled';
 import { Button } from './Shops.styled';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const initial = { color: '#35484f', backgroundColor: '#b4c0c4' };
 const hover = {
@@ -20,10 +22,24 @@ const transition = { type: 'spring', stiffness: 500 };
 
 const ShopItems = ({ items }) => {
   const [itemsShown, setItemsShown] = useState(items);
+  const all = useSelector(state => state.cart.allItems);
+  const liked = useSelector(state => state.cart.itemsLiked);
 
   useEffect(() => {
     setItemsShown(items);
   }, [items]);
+
+  const handleReremnder = () => {
+    const combinedArrays = [
+      ...liked,
+      ...all.filter(item => !liked.includes(item)),
+    ];
+
+    const uniqueItems = combinedArrays.filter(
+      (item, index, self) => index === self.findIndex(t => t.id === item.id)
+    );
+    setItemsShown(uniqueItems);
+  };
 
   const upItems = () => {
     const descending = [...items].sort(
@@ -59,6 +75,15 @@ const ShopItems = ({ items }) => {
           transition={transition}
         >
           Price <IconStyledTwo />
+        </Button>
+        <Button
+          onClick={handleReremnder}
+          as={motion.button}
+          initial={initial}
+          whileHover={hover}
+          transition={transition}
+        >
+          Favourite <ProductSortFavourite />
         </Button>
       </SortBtnsStyled>
       <ItemsStyled>

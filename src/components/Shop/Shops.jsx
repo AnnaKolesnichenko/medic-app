@@ -5,6 +5,8 @@ import {
   ListStyled,
   TitleStyled,
 } from './Shops.styled';
+import { useDispatch } from 'react-redux';
+import { clearAllItems } from 'store/cart-slice';
 
 const initial = { color: '#35484f', backgroundColor: '#b4c0c4' };
 const hover = {
@@ -16,6 +18,8 @@ const hover = {
 const transition = { type: 'spring', stiffness: 500 };
 
 const Shops = ({ onButtonClick }) => {
+  const dispatch = useDispatch();
+
   return (
     <ContainerStyled>
       <TitleStyled>Shops</TitleStyled>
@@ -29,7 +33,10 @@ const Shops = ({ onButtonClick }) => {
               initial={initial}
               whileHover={hover}
               transition={transition}
-              onClick={() => onButtonClick('Drug24')}
+              onClick={() => {
+                onButtonClick('Drug24');
+                dispatch(clearAllItems());
+              }}
             >
               Drug 24
             </Button>
@@ -41,7 +48,10 @@ const Shops = ({ onButtonClick }) => {
               whileHover={hover}
               transition={transition}
               type="button"
-              onClick={() => onButtonClick('Pharmacy')}
+              onClick={() => {
+                onButtonClick('Pharmacy');
+                dispatch(clearAllItems());
+              }}
             >
               Pharmacy
             </Button>
@@ -53,7 +63,10 @@ const Shops = ({ onButtonClick }) => {
               initial={initial}
               whileHover={hover}
               transition={transition}
-              onClick={() => onButtonClick('EDrug')}
+              onClick={() => {
+                onButtonClick('EDrug');
+                dispatch(clearAllItems());
+              }}
             >
               E-drug
             </Button>
@@ -65,7 +78,10 @@ const Shops = ({ onButtonClick }) => {
               initial={initial}
               whileHover={hover}
               transition={transition}
-              onClick={() => onButtonClick('StayWell')}
+              onClick={() => {
+                onButtonClick('StayWell');
+                dispatch(clearAllItems());
+              }}
             >
               StayWell
             </Button>
@@ -77,7 +93,10 @@ const Shops = ({ onButtonClick }) => {
               initial={initial}
               whileHover={hover}
               transition={transition}
-              onClick={() => onButtonClick('Medical')}
+              onClick={() => {
+                onButtonClick('Medical');
+                dispatch(clearAllItems());
+              }}
             >
               24/7
             </Button>

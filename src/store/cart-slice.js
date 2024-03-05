@@ -27,7 +27,6 @@ const CartSlice = createSlice({
       );
 
       state.allItems = state.allItems.concat(newItems);
-      console.log(state.allItems);
     },
     addItemToCart(state, action) {
       const id = action.payload;
@@ -71,6 +70,9 @@ const CartSlice = createSlice({
     clearCart(state, action) {
       state.cartItems = [];
     },
+    clearAllItems(state, action) {
+      state.allItems = [];
+    },
     handleLiked(state, action) {
       const id = action.payload;
       const product = state.allItems.find(item => item.id === id);
@@ -79,8 +81,13 @@ const CartSlice = createSlice({
         const existingItem = state.itemsLiked.findIndex(item => item.id === id);
         if (existingItem !== -1) {
           state.itemsLiked.splice(existingItem, 1);
+          product.isLiked = false;
         } else {
-          state.itemsLiked.push(product);
+          const product = state.allItems.find(item => item.id === id);
+          if (product) {
+            state.itemsLiked.push({ ...product, isLiked: true });
+            product.isLiked = true;
+          }
         }
       }
     },
@@ -92,6 +99,7 @@ export const {
   handleDecreaseItem,
   handleIncreaseItem,
   clearCart,
+  clearAllItems,
   addItems,
   handleLiked,
 } = CartSlice.actions;
