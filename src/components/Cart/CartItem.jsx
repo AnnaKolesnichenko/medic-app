@@ -9,9 +9,15 @@ import {
   IconStyled,
   IconStyledTwo,
   QuantitySpan,
+  TrashContainerStyled,
+  TrashIconStyled,
 } from './CartItem.styled';
 
-import { handleDecreaseItem, handleIncreaseItem } from 'store/cart-slice';
+import {
+  handleDecreaseItem,
+  handleIncreaseItem,
+  removeItemFromCart,
+} from 'store/cart-slice';
 
 const CartItem = ({ item, id }) => {
   const dispatch = useDispatch();
@@ -23,6 +29,11 @@ const CartItem = ({ item, id }) => {
 
   const handleRemoveItems = () => {
     dispatch(handleDecreaseItem(item.id));
+  };
+
+  const removeItem = () => {
+    dispatch(removeItemFromCart(item.id));
+    console.log(item.id);
   };
   return (
     <CartLi key={item.id}>
@@ -40,6 +51,9 @@ const CartItem = ({ item, id }) => {
           </div>
         </CartItemQuantity>
       </AboutItemDiv>
+      <TrashContainerStyled>
+        <TrashIconStyled onClick={removeItem} />
+      </TrashContainerStyled>
     </CartLi>
   );
 };

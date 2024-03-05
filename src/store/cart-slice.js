@@ -73,6 +73,10 @@ const CartSlice = createSlice({
     clearAllItems(state, action) {
       state.allItems = [];
     },
+    removeItemFromCart(state, action) {
+      const id = action.payload;
+      state.cartItems = state.cartItems.filter(item => item.id !== id);
+    },
     handleLiked(state, action) {
       const id = action.payload;
       const product = state.allItems.find(item => item.id === id);
@@ -105,6 +109,7 @@ export const {
   handleIncreaseItem,
   clearCart,
   clearAllItems,
+  removeItemFromCart,
   addItems,
   handleLiked,
 } = CartSlice.actions;

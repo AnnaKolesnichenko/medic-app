@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { TbTriangleFilled } from 'react-icons/tb';
 import { TbTriangleInvertedFilled } from 'react-icons/tb';
+import { FaTrashArrowUp } from 'react-icons/fa6';
 
 export const CartLi = styled.li`
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -57,15 +59,44 @@ export const QuantitySpan = styled.span`
 export const IconStyled = styled(TbTriangleFilled)`
   width: 15px;
   height: 15px;
-  color: lightgray;
-  border: 1px solid lightgrey;
+  color: #b4c0c4;
+  border: 1px solid #b4c0c4;
   border-top-right-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    color: #35484f;
+  }
 `;
 
 export const IconStyledTwo = styled(TbTriangleInvertedFilled)`
   width: 15px;
   height: 15px;
-  color: lightgray;
-  border: 1px solid lightgrey;
+  color: #b4c0c4;
+  border: 1px solid #b4c0c4;
   border-bottom-right-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    color: #35484f;
+  }
+`;
+
+export const TrashIconStyled = styled(FaTrashArrowUp)`
+  width: 20px;
+  height: 20px;
+  color: #b4c0c4;
+
+  cursor: pointer;
+  &:hover {
+    color: purple;
+  }
+`;
+
+export const TrashContainerStyled = styled.div`
+  position: absolute;
+  bottom: 15px;
+  right: 3px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;

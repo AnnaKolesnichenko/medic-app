@@ -21,7 +21,6 @@ const Cart = () => {
   useEffect(() => {
     let total = 0;
     cartData.forEach(item => {
-      console.log(item);
       total += item.price * item.quantity;
     });
     setTotalCost(total);
