@@ -9,6 +9,7 @@ const CartItems = () => {
   return (
     <ContainerStyled>
       <CartTitle>Cart Items:</CartTitle>
+
       <CartList>
         {products.map(item => (
           <CartItem item={item} />

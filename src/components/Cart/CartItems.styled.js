@@ -1,3 +1,4 @@
+import { NavLinkStyled } from 'components/Header/Header.styled';
 import styled from 'styled-components';
 
 export const ContainerStyled = styled.div`
@@ -22,4 +23,21 @@ export const CartTitle = styled.span`
   font-family: 'Raleway', sans-serif;
   color: #35484f;
   font-weight: 600;
+`;
+
+export const EmptyCartContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const LinkStyled = styled(NavLinkStyled)`
+  text-decoration: none;
+  color: #35484f;
+
+  &:hover {
+    color: purple;
+  }
 `;

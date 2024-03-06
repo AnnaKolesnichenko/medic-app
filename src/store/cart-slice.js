@@ -75,7 +75,11 @@ const CartSlice = createSlice({
     },
     removeItemFromCart(state, action) {
       const id = action.payload;
-      state.cartItems = state.cartItems.filter(item => item.id !== id);
+      const existingItem = state.cartItems.find(item => item.id === id);
+
+      if (existingItem) {
+        state.cartItems.splice(existingItem, 1);
+      }
     },
     handleLiked(state, action) {
       const id = action.payload;

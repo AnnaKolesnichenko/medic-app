@@ -10,13 +10,17 @@ import CartItems from './CartItems';
 import { useEffect, useRef, useState } from 'react';
 import { ContainerUserForm, FormStyled } from './UserForm.styled';
 import { stagger, useAnimate } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import Input from './Input';
 import { addItemsToDB } from 'services/api-services';
+import { clearCart } from 'store/cart-slice';
+import CartEmpty from './CartEmpty';
 
 const Cart = () => {
   const cartData = useSelector(state => state.cart.cartItems);
   const [totalCost, setTotalCost] = useState();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     let total = 0;
@@ -57,12 +61,21 @@ const Cart = () => {
       return;
     }
     console.log('SUCCESS');
-    addItemsToDB({ userData, cartData });
+
     const orderData = {
       userData,
       cartData,
+      id: uuidv4(),
     };
+    console.log(orderData);
+    addItemsToDB(orderData);
     localStorage.setItem('cart', JSON.stringify(orderData));
+    dispatch(clearCart());
+
+    nameRef.current.value = '';
+    emailRef.current.value = '';
+    phoneRef.current.value = '';
+    addressRef.current.value = '';
   };
 
   return (
@@ -76,8 +89,8 @@ const Cart = () => {
             <Input html="address" type="text" id="address" ref={addressRef} />
           </FormStyled>
         </ContainerUserForm>
-
-        <CartItems />
+        {cartData.length === 0 && <CartEmpty />}
+        {cartData.length > 0 && <CartItems />}
       </div>
       <SubmitContainer>
         <TotalStyled>Total price:</TotalStyled>
