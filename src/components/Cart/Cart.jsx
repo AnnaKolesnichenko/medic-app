@@ -16,11 +16,16 @@ import Input from './Input';
 import { addItemsToDB } from 'services/api-services';
 import { clearCart } from 'store/cart-slice';
 import CartEmpty from './CartEmpty';
+import OrderInfo from './OrderInfo';
+import Notiflix from 'notiflix';
 
 const Cart = () => {
   const cartData = useSelector(state => state.cart.cartItems);
   const [totalCost, setTotalCost] = useState();
+
   const dispatch = useDispatch();
+  const [order, setOrder] = useState(null);
+  const [windowOpen, setWindowOpen] = useState(false);
 
   useEffect(() => {
     let total = 0;
@@ -52,7 +57,7 @@ const Cart = () => {
       !userData.phone.trim() ||
       !userData.address.trim()
     ) {
-      console.log('invalid data');
+      Notiflix.Notify.failure('Fill in order form to proceed');
       animate(
         'input',
         { x: [-3, -1, 0, 1, 3, 0] },
@@ -60,22 +65,28 @@ const Cart = () => {
       );
       return;
     }
-    console.log('SUCCESS');
 
     const orderData = {
       userData,
       cartData,
       id: uuidv4(),
     };
-    console.log(orderData);
+
     addItemsToDB(orderData);
     localStorage.setItem('cart', JSON.stringify(orderData));
     dispatch(clearCart());
+    setOrder(orderData);
+    setWindowOpen(true);
 
     nameRef.current.value = '';
     emailRef.current.value = '';
     phoneRef.current.value = '';
     addressRef.current.value = '';
+  };
+
+  const handleCloseModal = () => {
+    setOrder(null);
+    setWindowOpen(false);
   };
 
   return (
@@ -102,10 +113,14 @@ const Cart = () => {
           initial={{ color: 'black', backgroundColor: 'lightgrey' }}
           whileHover={{ scale: 1.1, backgroundColor: 'purple', color: 'pink' }}
           transition={{ type: 'spring', duration: 0.3, stiffness: 400 }}
+          disabled={order && windowOpen}
         >
           Submit
         </SubmitButton>
       </SubmitContainer>
+      {order && windowOpen && (
+        <OrderInfo data={order} handleClose={handleCloseModal} />
+      )}
     </Container>
   );
 };

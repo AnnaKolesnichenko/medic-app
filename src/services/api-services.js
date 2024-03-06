@@ -76,3 +76,8 @@ export const getStayWell = async () => {
 export const addItemsToDB = data => {
   axios.post(`${API_URL}/userData.json`, data);
 };
+
+export const getOrderInfo = async () => {
+  const orderInfo = await axios.get(`${API_URL}/userData.json`);
+  return orderInfo;
+};
