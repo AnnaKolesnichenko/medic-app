@@ -7,6 +7,7 @@ export const OrdersContainer = styled.div`
 export const OrdersList = styled.ul`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 15px;
   list-style: none;
   margin: 0;
