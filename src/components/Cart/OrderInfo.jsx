@@ -12,12 +12,18 @@ import {
   TickIconeStyled,
   Modal,
 } from './OrderInfo.styled';
+import { motion } from 'framer-motion';
 
 const OrderInfo = ({ data, handleClose }) => {
-  console.log(data.id, data.cartData);
   return (
     <Backdrop>
-      <Modal>
+      <Modal
+        as={motion.div}
+        initial={{ y: 50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: 50, opacity: 0 }}
+        transition={{ duration: 0.7, type: 'spring', bounce: 0.4 }}
+      >
         <OrderContainer>
           <CloseCrossStyled onClick={handleClose} />
           <TitleStyled>

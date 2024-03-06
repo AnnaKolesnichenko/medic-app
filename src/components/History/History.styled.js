@@ -10,7 +10,7 @@ export const HistoryContainer = styled.div`
 
 export const HistoryTitle = styled.p`
   margin: 0;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
   color: #35484f;
   font-size: 14px;
@@ -20,15 +20,17 @@ export const HistoryTitle = styled.p`
 
 export const FormStyled = styled.form`
   display: flex;
-  flex-direction: row;
-  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
   justify-content: center;
 `;
 
 export const DivStyled = styled.div`
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 400px;
 `;
 
 export const LabelStyled = styled.label`
@@ -43,4 +45,22 @@ export const InputStyled = styled.input`
   box-sizing: border-box;
   border-radius: 5px;
   border: 1px solid #b4c0c4;
+`;
+
+export const ButtonStyled = styled.button`
+  width: 100px;
+  margin-top: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  border: 1px solid #b4c0c4;
+  color: #35484f;
+  background-color: #b4c0c4;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
 `;

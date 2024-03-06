@@ -78,6 +78,8 @@ export const addItemsToDB = data => {
 };
 
 export const getOrderInfo = async () => {
-  const orderInfo = await axios.get(`${API_URL}/userData.json`);
-  return orderInfo;
+  const orderInfo = await fetch(`${API_URL}/userData.json`);
+  const res = await orderInfo.json();
+
+  return res;
 };

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Container,
   SubmitButton,
@@ -70,6 +70,7 @@ const Cart = () => {
       userData,
       cartData,
       id: uuidv4(),
+      date: new Date(),
     };
 
     addItemsToDB(orderData);
@@ -118,9 +119,12 @@ const Cart = () => {
           Submit
         </SubmitButton>
       </SubmitContainer>
-      {order && windowOpen && (
-        <OrderInfo data={order} handleClose={handleCloseModal} />
-      )}
+      <AnimatePresence>
+        {' '}
+        {order && windowOpen && (
+          <OrderInfo data={order} handleClose={handleCloseModal} />
+        )}
+      </AnimatePresence>
     </Container>
   );
 };
