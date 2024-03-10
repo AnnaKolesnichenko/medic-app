@@ -1,3 +1,4 @@
+import React, { useState, useEffect, useRef } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import {
   Container,
@@ -7,7 +8,6 @@ import {
   TotalStyled,
 } from './Cart.styled';
 import CartItems from './CartItems';
-import { useEffect, useRef, useState } from 'react';
 import { ContainerUserForm, FormStyled } from './UserForm.styled';
 import { stagger, useAnimate } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,12 +18,15 @@ import { clearCart } from 'store/cart-slice';
 import CartEmpty from './CartEmpty';
 import OrderInfo from './OrderInfo';
 import Notiflix from 'notiflix';
+import LocationMap from 'components/LocationMap/LocationMap';
 
 const Cart = () => {
+  const defaultAddress = 'Ukraine';
   const cartData = useSelector(state => state.cart.cartItems);
-  const [totalCost, setTotalCost] = useState();
-
   const dispatch = useDispatch();
+  const [totalCost, setTotalCost] = useState();
+  const [address, setAddress] = useState(defaultAddress);
+
   const [order, setOrder] = useState(null);
   const [windowOpen, setWindowOpen] = useState(false);
 
@@ -41,8 +44,10 @@ const Cart = () => {
   const phoneRef = useRef();
   const addressRef = useRef();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
+
+    setAddress(addressRef.current.value);
 
     const userData = {
       name: nameRef.current.value,
@@ -119,12 +124,15 @@ const Cart = () => {
           Submit
         </SubmitButton>
       </SubmitContainer>
+
       <AnimatePresence>
         {' '}
         {order && windowOpen && (
           <OrderInfo data={order} handleClose={handleCloseModal} />
         )}
       </AnimatePresence>
+
+      <LocationMap address={address} />
     </Container>
   );
 };

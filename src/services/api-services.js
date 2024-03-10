@@ -3,6 +3,8 @@ import axios from 'axios';
 const API_URL =
   'https://medic-delivery-app-default-rtdb.europe-west1.firebasedatabase.app';
 
+const GOOGLE_API_KEY = 'AIzaSyAUj3Qur_NFCB-mhi6TL6M8JCFXWxQI2V8';
+
 export const getDrug24 = async () => {
   try {
     const response = await fetch(`${API_URL}/drug24.json`);
@@ -82,4 +84,23 @@ export const getOrderInfo = async () => {
   const res = await orderInfo.json();
 
   return res;
+};
+
+//-------------GOOGLE MAP API
+export const searchAddress = async data => {
+  if (!data.trim()) {
+    throw new Error('Address is required');
+  }
+  return axios
+    .get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURI(
+        data
+      )}&key=${GOOGLE_API_KEY}`
+    )
+    .then(res => {
+      return res;
+    })
+    .catch(err => {
+      throw err;
+    });
 };

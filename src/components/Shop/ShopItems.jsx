@@ -8,7 +8,7 @@ import {
   SortBtnsStyled,
 } from './ShopItem.styled';
 import { Button } from './Shops.styled';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 
 const initial = { color: '#35484f', backgroundColor: '#b4c0c4' };
@@ -58,35 +58,37 @@ const ShopItems = ({ items }) => {
 
   return (
     <div>
-      <SortBtnsStyled>
-        <Button
-          onClick={downItems}
-          as={motion.button}
-          initial={initial}
-          whileHover={hover}
-          transition={transition}
-        >
-          Price <IconStyled />
-        </Button>
-        <Button
-          onClick={upItems}
-          as={motion.button}
-          initial={initial}
-          whileHover={hover}
-          transition={transition}
-        >
-          Price <IconStyledTwo />
-        </Button>
-        <Button
-          onClick={handleRerender}
-          as={motion.button}
-          initial={initial}
-          whileHover={hover}
-          transition={transition}
-        >
-          Fav <ProductSortFavourite />
-        </Button>
-      </SortBtnsStyled>
+      <AnimatePresence>
+        <SortBtnsStyled>
+          <Button
+            onClick={downItems}
+            as={motion.button}
+            initial={initial}
+            whileHover={hover}
+            transition={transition}
+          >
+            Price <IconStyled />
+          </Button>
+          <Button
+            onClick={upItems}
+            as={motion.button}
+            initial={initial}
+            whileHover={hover}
+            transition={transition}
+          >
+            Price <IconStyledTwo />
+          </Button>
+          <Button
+            onClick={handleRerender}
+            as={motion.button}
+            initial={initial}
+            whileHover={hover}
+            transition={transition}
+          >
+            Fav <ProductSortFavourite />
+          </Button>
+        </SortBtnsStyled>
+      </AnimatePresence>
       <ItemsStyled>
         {itemsShown.map(shop => (
           <ShopItem shop={shop} key={shop.id} />

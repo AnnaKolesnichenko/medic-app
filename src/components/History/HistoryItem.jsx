@@ -16,8 +16,6 @@ const HistoryItem = ({ item, date }) => {
     year: 'numeric',
   };
   const formattedDate = dateObject.toLocaleDateString('en-US', options);
-  console.log(formattedDate);
-  console.log(date);
 
   return (
     <OrdersItem key={item.id}>
